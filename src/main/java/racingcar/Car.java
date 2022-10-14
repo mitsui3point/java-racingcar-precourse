@@ -15,15 +15,15 @@ public class Car {
         this.setMembers(name);
     }
 
-    private void setMembers(String name) {
-        this.name = name;
-        this.rounds = new ArrayList<>();
-    }
-
     private void checkMembers(String name) {
         if(isInvalidName(name)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void setMembers(String name) {
+        this.name = name;
+        this.rounds = new ArrayList<>();
     }
 
     private boolean isInvalidName(String name) {
@@ -61,5 +61,9 @@ public class Car {
     private boolean isInvalidRoundIndex(int roundIndex) {
         return roundIndex < MIN_ROUND_INDEX ||
                 roundIndex > this.rounds.size();
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
