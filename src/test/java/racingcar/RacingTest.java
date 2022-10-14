@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.constant.RoundStatus;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
 public class RacingTest {
     private Racing racing;
@@ -17,19 +17,17 @@ public class RacingTest {
         this.racing = new Racing("test1,test2,test3", 3);
     }
 
-    @Test
-    void 회차_세팅() {
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2})
+    void 회차_세팅(int roundIndex) {
         assertThatNoException()
                 .isThrownBy(() -> {
-                    this.racing
-                            .getCar("test1")
-                            .getRound(0);
-                    this.racing
-                            .getCar("test1")
-                            .getRound(1);
-                    this.racing
-                            .getCar("test1")
-                            .getRound(2);
+                    this.racing.getCar("test1")
+                            .getRound(roundIndex);
+                    this.racing.getCar("test2")
+                            .getRound(roundIndex);
+                    this.racing.getCar("test3")
+                            .getRound(roundIndex);
                 });
     }
 

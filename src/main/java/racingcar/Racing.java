@@ -71,13 +71,7 @@ public class Racing {
 
     public Car getCar(String name) {
         for (Car car: this.cars) {
-            return this.searchOneCarByName(name, car);
-        }
-        throw new IllegalArgumentException();
-    }
-
-    private Car searchOneCarByName(String name, Car car) {
-        if(isEqualsCarName(name, car)) {
+            if (!this.isEqualsCarName(name, car)) continue;
             return car;
         }
         throw new IllegalArgumentException();

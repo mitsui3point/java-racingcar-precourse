@@ -53,6 +53,9 @@ public class CarTest {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
             this.car.getRound(4).getRoundStatus();
         });
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            this.car.getRound(3).getRoundStatus();
+        });
     }
 
     @ParameterizedTest

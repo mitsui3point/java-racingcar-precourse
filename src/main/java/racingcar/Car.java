@@ -60,7 +60,7 @@ public class Car {
 
     private boolean isInvalidRoundIndex(int roundIndex) {
         return roundIndex < MIN_ROUND_INDEX ||
-                roundIndex > this.rounds.size();
+                roundIndex >= this.rounds.size();
     }
 
     public String getName() {
