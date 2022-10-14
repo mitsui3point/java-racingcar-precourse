@@ -2,22 +2,21 @@ package racingcar;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class RoundsTest {
+public class CarTest {
 
-    private Rounds rounds;
+    private Car car;
 
     @ParameterizedTest
     @ValueSource(ints = {
             1, 2, 3, 4, 10
     })
-    void 회차_누적_개수_유효성_체크(int roundsNumber) {
+    void 누적_회차_개수_유효성_체크(int roundsNumber) {
         assertThatNoException().isThrownBy(() -> {
-            this.rounds = new Rounds(roundsNumber);
+            this.car = new Car(roundsNumber);
         });
     }
 
@@ -25,19 +24,19 @@ public class RoundsTest {
     @ValueSource(ints = {
             -12, -10, -1, 0
     })
-    void 회차_누적_개수_유효성_체크_예외(int roundsNumber) {
+    void 누적_회차_개수_유효성_체크_예외(int roundsNumber) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            this.rounds = new Rounds(roundsNumber);
+            this.car = new Car(roundsNumber);
         });
     }
 
     @ParameterizedTest
     @ValueSource(ints = {
-            1, 2, 3, 4, 9, 15
+            1, 2, 3, 4, 10
     })
-    void 회차_누적(int roundsNumber) {
-        this.rounds = new Rounds(roundsNumber);
-        int actual = this.rounds.getRounds().size();
+    void 자동차_누적_회차_세팅(int roundsNumber) {
+        this.car = new Car(roundsNumber);
+        int actual = this.car.getRounds().size();
         int expected = roundsNumber;
         assertThat(actual).isEqualTo(expected);
     }

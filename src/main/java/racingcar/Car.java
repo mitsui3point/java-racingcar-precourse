@@ -1,17 +1,18 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import org.assertj.core.api.AbstractIterableAssert;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Rounds {
+public class Car {
 
     public static final int MIN_RANGE_ROUNDS_NUMBER = 1;
     private int roundsNumber;
     private List<Round> rounds;
 
-    public Rounds(int roundsNumber) {
+    public Car(int roundsNumber) {
         this.checkMembers(roundsNumber);
         this.setMembers(roundsNumber);
     }
