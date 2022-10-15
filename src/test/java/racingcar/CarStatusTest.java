@@ -1,22 +1,21 @@
 package racingcar;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.constant.RoundStatus;
+import racingcar.constant.CarAction;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class RoundTest {
-    private Round round;
+public class CarStatusTest {
+    private CarStatus carStatus;
 
     @ParameterizedTest
     @ValueSource(ints = {
             0, 1, 2, 3, 4, 5, 6, 7, 8, 9
     })
-    void 할당된_회차_랜덤번호_유효성_체크(int randomNumber) {
+    void 자동차_상태_할당된_랜덤번호_유효성_체크(int randomNumber) {
         assertThatNoException().isThrownBy(() -> {
-            this.round = new Round(randomNumber);
+            this.carStatus = new CarStatus(randomNumber);
         });
     }
 
@@ -25,10 +24,10 @@ public class RoundTest {
             -1, -2 , -3,
             10, 11, 20, 500, 5242
     })
-    void 할당된_회차_랜덤번호_유효성_체크_예외(int randomNumber) {
+    void 자동차_상태_할당된_랜덤번호_유효성_체크_예외(int randomNumber) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    this.round = new Round(randomNumber);
+                    this.carStatus = new CarStatus(randomNumber);
                 });
     }
 
@@ -36,10 +35,10 @@ public class RoundTest {
     @ValueSource(ints = {
             0, 1, 2, 3
     })
-    void 회차_랜덤번호_멈춤(int randomNumber) {
-        this.round = new Round(randomNumber);
-        RoundStatus actual = this.round.getRoundStatus();
-        RoundStatus expected = RoundStatus.STOP;
+    void 자동차_상태_멈춤(int randomNumber) {
+        this.carStatus = new CarStatus(randomNumber);
+        CarAction actual = this.carStatus.getCarAction();
+        CarAction expected = CarAction.STOP;
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -47,10 +46,10 @@ public class RoundTest {
     @ValueSource(ints = {
             4, 5, 6, 7, 8, 9
     })
-    void 회차_랜덤번호_전진(int randomNumber) {
-        this.round = new Round(randomNumber);
-        RoundStatus actual = this.round.getRoundStatus();
-        RoundStatus expected = RoundStatus.FORWARD;
+    void 자동차_상태_전진(int randomNumber) {
+        this.carStatus = new CarStatus(randomNumber);
+        CarAction actual = this.carStatus.getCarAction();
+        CarAction expected = CarAction.FORWARD;
         assertThat(actual).isEqualTo(expected);
     }
 }

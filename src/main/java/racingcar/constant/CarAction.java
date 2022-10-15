@@ -1,5 +1,5 @@
 package racingcar.constant;
 
-public enum RoundStatus {
+public enum CarAction {
     FORWARD, STOP
 }

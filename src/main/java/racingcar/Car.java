@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import org.assertj.core.api.AbstractIterableAssert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,45 +8,43 @@ import java.util.List;
 public class Car {
 
     public static final int MIN_RANGE_ROUNDS_NUMBER = 1;
-    private int roundsNumber;
-    private List<Round> rounds;
+    private List<CarStatus> carStatuses;
 
-    public Car(int roundsNumber) {
-        this.checkMembers(roundsNumber);
-        this.setMembers(roundsNumber);
+    public Car(int carStatusCount) {
+        this.checkMembers(carStatusCount);
+        this.setMembers(carStatusCount);
     }
 
-    private void setMembers(int roundsNumber) {
-        this.setRoundsNumber(roundsNumber);
-        this.addRounds(roundsNumber);
+    private void setMembers(int carStatusCount) {
+        this.addRounds(carStatusCount);
     }
 
-    private void setRoundsNumber(int roundsNumber) {
-        this.roundsNumber = roundsNumber;
-    }
-
-    private void addRounds(int roundsNumber) {
-        this.rounds = new ArrayList<>();
-        for (int roundIndex = 0; roundIndex < roundsNumber; roundIndex++) {
-            this.rounds
-                    .add(new Round(
-                            Randoms.pickNumberInRange(
-                                    Round.MIN_RANGE_RANDOM_NUMBER,
-                                    Round.MAX_RANGE_RANDOM_NUMBER)));
+    private void addRounds(int carStatusCount) {
+        this.carStatuses = new ArrayList<>();
+        for (int carStatusIndex = 0; carStatusIndex < carStatusCount; carStatusIndex++) {
+            this.carStatuses
+                    .add(new CarStatus(
+                            this.getRandomNumber()));
         }
     }
 
-    private void checkMembers(int roundsNumber) {
-        if (!isValidRoundsNumber(roundsNumber)) {
+    private int getRandomNumber() {
+        return Randoms.pickNumberInRange(
+                CarStatus.MIN_RANGE_RANDOM_NUMBER,
+                CarStatus.MAX_RANGE_RANDOM_NUMBER);
+    }
+
+    private void checkMembers(int carStatusCount) {
+        if (!isValidRoundsNumber(carStatusCount)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private boolean isValidRoundsNumber(int roundsNumber) {
-        return roundsNumber >= MIN_RANGE_ROUNDS_NUMBER;
+    private boolean isValidRoundsNumber(int carStatusCount) {
+        return carStatusCount >= MIN_RANGE_ROUNDS_NUMBER;
     }
 
-    public List<Round> getRounds() {
-        return this.rounds;
+    public List<CarStatus> getCarStatuses() {
+        return this.carStatuses;
     }
 }
