@@ -2,13 +2,13 @@ package racingcar;
 
 import racingcar.constant.Conditions;
 import racingcar.constant.ErrorMessage;
-import racingcar.constant.Status;
+import racingcar.constant.CarStatus;
 
-public class CarStatus {
+public class Car {
     private int randomNumber;
 
-    public CarStatus(int randomNumber) {
-        if (this.isValidRangeRandomNumber(randomNumber)) {
+    public Car(int randomNumber) {
+        if (!this.isValidRangeRandomNumber(randomNumber)) {
             throw new IllegalArgumentException(ErrorMessage.RANDOM_NUMBER_IS_OUT_OF_RANGE);
         }
         this.randomNumber = randomNumber;
@@ -19,11 +19,11 @@ public class CarStatus {
                 randomNumber <= Conditions.MAX_RANDOM_NUMBER;
     }
 
-    public Status get() {
+    public CarStatus get() {
         if (this.isForwardNumber()) {
-            return Status.FORWARD;
+            return CarStatus.FORWARD;
         }
-        return Status.STOP;
+        return CarStatus.STOP;
     }
 
     private boolean isForwardNumber() {
