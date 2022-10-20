@@ -19,7 +19,7 @@ public class Car {
                 randomNumber <= Conditions.MAX_RANDOM_NUMBER;
     }
 
-    public CarStatus get() {
+    public CarStatus getStatus() {
         if (this.isForwardNumber()) {
             return CarStatus.FORWARD;
         }

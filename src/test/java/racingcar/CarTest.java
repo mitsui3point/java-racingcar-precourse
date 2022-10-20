@@ -16,7 +16,7 @@ public class CarTest {
     })
     void 자동차_전진(int randomNumber) {
         this.car = new Car(randomNumber);
-        CarStatus actual = this.car.get();
+        CarStatus actual = this.car.getStatus();
         CarStatus expected = CarStatus.FORWARD;
         assertThat(actual).isEqualTo(expected);
     }
@@ -27,7 +27,7 @@ public class CarTest {
     })
     void 자동차_멈춤(int randomNumber) {
         this.car = new Car(randomNumber);
-        CarStatus actual = this.car.get();
+        CarStatus actual = this.car.getStatus();
         CarStatus expected = CarStatus.STOP;
         assertThat(actual).isEqualTo(expected);
     }
