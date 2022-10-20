@@ -6,6 +6,6 @@ public enum CarStatus {
     FORWARD, STOP;
 
     public static boolean isForward(Car car) {
-        return CarStatus.FORWARD.equals(car.get());
+        return CarStatus.FORWARD.equals(car.getStatus());
     }
 }
