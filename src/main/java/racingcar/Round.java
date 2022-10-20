@@ -5,7 +5,7 @@ import racingcar.constant.Conditions;
 import racingcar.constant.ErrorMessage;
 import racingcar.constant.Regex;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Round {
@@ -62,7 +62,7 @@ public class Round {
     private void setMembers(String names, int[] randomNumbers) {
         this.names = names.split(Regex.COMMA);
         this.randomNumbers = randomNumbers;
-        this.round = new HashMap<>();
+        this.round = new LinkedHashMap<>();
         int carCount = 0;
         for (String name : this.names) {
             this.round

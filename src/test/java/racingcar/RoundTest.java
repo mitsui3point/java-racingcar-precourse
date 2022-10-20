@@ -11,7 +11,7 @@ import racingcar.constant.CarStatus;
 import racingcar.constant.ErrorMessage;
 import racingcar.constant.Regex;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,7 +33,7 @@ public class RoundTest {
     void 회차_저장() {
         this.round = new Round(this.names, this.randomNumbers);
         Map<String, CarStatus> actual = this.round.getRound();
-        Map<String, CarStatus> expected = new HashMap<>();
+        Map<String, CarStatus> expected = new LinkedHashMap<>();
         for (int registCarIndex = 0;
              registCarIndex < maxRegistCarCount;
              registCarIndex++) {
