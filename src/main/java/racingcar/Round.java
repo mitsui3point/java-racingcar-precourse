@@ -26,7 +26,7 @@ public class Round {
         }
         this.checkMember(this.isValidNumberGenerator(numberGenerator),
                 ErrorMessage.NUMBER_GENERATOR_IS_NULL);
-        this.checkMember(this.isValidRandomNumbersLength(numberGenerator.generateNumber(), names),
+        this.checkMember(this.isValidRandomNumbersLength(numberGenerator.generateNumbers(), names),
                 ErrorMessage.RANDOM_NUMBERS_LENGTH_IS_INVALID);
     }
 
@@ -67,7 +67,7 @@ public class Round {
         for (String name : names.split(Regex.COMMA)) {
             this.round.put(
                             name,
-                            new Car(numberGenerator.generateNumber()[carCount++]).getStatus()
+                            new Car(numberGenerator.generateNumbers()[carCount++]).getStatus()
             );
         }
     }

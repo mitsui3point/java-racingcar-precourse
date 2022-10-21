@@ -38,7 +38,7 @@ public class RoundResultTest {
     @Test
     void 전체회차_저장() {
         this.roundResult = new RoundResult(this.rounds);
-        LinkedHashMap<String, String> actual = this.roundResult.getRoundResult(4);
+        LinkedHashMap<String, String> actual = this.roundResult.getRoundResult().get(4);
         System.out.println(actual);
         System.out.println(this.expected);
         assertThat(actual).isEqualTo(this.expected);

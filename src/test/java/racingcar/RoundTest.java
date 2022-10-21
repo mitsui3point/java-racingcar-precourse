@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.constant.CarStatus;
 import racingcar.constant.ErrorMessage;
@@ -34,7 +33,7 @@ public class RoundTest {
         for (int registCarIndex = 0; registCarIndex < maxRegistCarCount; registCarIndex++) {
             this.expected.put(
                     splitNames[registCarIndex],
-                    new Car(this.numberGenerator.generateNumber()[registCarIndex]).getStatus()
+                    new Car(this.numberGenerator.generateNumbers()[registCarIndex]).getStatus()
             );
         }
     }

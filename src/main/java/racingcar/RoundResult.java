@@ -71,8 +71,8 @@ public class RoundResult {
         return Result.PRINT_STOP;
     }
 
-    public LinkedHashMap<String, String> getRoundResult(int roundIndex) {
-        return this.roundResults.get(roundIndex);
+    public List<LinkedHashMap<String, String>> getRoundResult() {
+        return this.roundResults;
     }
 
     public List<String> getWinners() {
