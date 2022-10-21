@@ -5,10 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -54,6 +51,14 @@ public class RoundResultTest {
                 .isThrownBy(
                         () -> this.roundResult = new RoundResult(rounds)
                 );
+    }
+
+    @Test
+    void 최종_우승자_노출() {
+        this.roundResult = new RoundResult(this.rounds);
+        List<String> actual = this.roundResult.getWinners();
+        List<String> expected = new ArrayList<>(Arrays.asList("pobi","crong","honux"));
+        assertThat(actual).isEqualTo(expected);
     }
 
     private int[] getTestRandomNumbers(int roundIndex) {

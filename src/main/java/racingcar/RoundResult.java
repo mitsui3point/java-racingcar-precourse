@@ -4,14 +4,12 @@ import racingcar.constant.CarStatus;
 import racingcar.constant.ErrorMessage;
 import racingcar.constant.Result;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RoundResult {
     private List<LinkedHashMap<String, String>> roundResults;
     private LinkedHashMap<String, String> roundResult;
+    private List<String> winners;
 
     public RoundResult(List<Round> rounds) {
         this.checkMembers(rounds);
@@ -30,9 +28,14 @@ public class RoundResult {
     }
 
     private void setMembers(List<Round> rounds) {
+        this.addRoundResults(rounds);
+        this.setWinners();
+    }
+
+    private void addRoundResults(List<Round> rounds) {
         this.roundResult = new LinkedHashMap<>();
         this.roundResults = new ArrayList<>();
-        for (Round round:rounds) {
+        for (Round round: rounds) {
             this.putRoundResult(round);
             this.roundResults.add(new LinkedHashMap<>(this.roundResult));
         }
@@ -70,5 +73,48 @@ public class RoundResult {
 
     public LinkedHashMap<String, String> getRoundResult(int roundIndex) {
         return this.roundResults.get(roundIndex);
+    }
+
+    public List<String> getWinners() {
+        return this.winners;
+    }
+
+    private void setWinners() {
+        this.winners = new ArrayList<>();
+        this.addWinner(this.getWinnerScore());
+    }
+
+    private void addWinner(int winnerScore) {
+        for (Map.Entry<String, String> car : getLastRoundEntrySet()) {
+            String player = car.getKey();
+            int playerScore = car.getValue().length();
+            if (this.isWinner(winnerScore, playerScore)) {
+                this.winners.add(player);
+            }
+        }
+    }
+
+    private boolean isWinner(int winnerScore, int playerScore) {
+        return winnerScore == playerScore;
+    }
+
+    private int getWinnerScore() {
+        int winnerScore = 0;
+        for (Map.Entry<String, String> car : getLastRoundEntrySet()) {
+            String player = car.getKey();
+            int playerScore = car.getValue().length();
+            if (this.isWinnerScore(winnerScore, playerScore)){
+                winnerScore = playerScore;
+            }
+        }
+        return winnerScore;
+    }
+
+    private Set<Map.Entry<String, String>> getLastRoundEntrySet() {
+        return this.roundResults.get(this.roundResults.size() - 1).entrySet();
+    }
+
+    private boolean isWinnerScore(int winnerScore, int playerScore) {
+        return winnerScore < playerScore;
     }
 }
