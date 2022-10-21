@@ -1,8 +1,8 @@
 package racingcar;
 
+import racingcar.constant.CarStatus;
 import racingcar.constant.Conditions;
 import racingcar.constant.ErrorMessage;
-import racingcar.constant.CarStatus;
 
 public class Car {
     private int randomNumber;
