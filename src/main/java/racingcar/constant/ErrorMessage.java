@@ -10,6 +10,8 @@ public class ErrorMessage {
             PREFIX + "Car names is empty";
     public static final String CAR_NAME_LENGTH_IS_OUT_OF_RANGE =
             PREFIX + "Car name length is out of range";
+    public static final String NUMBER_GENERATOR_IS_NULL =
+            PREFIX + "Number generator is null";
     public static final String RANDOM_NUMBERS_LENGTH_IS_INVALID =
             PREFIX + "Random numbers length is invalid";
     public static final String ROUNDS_IS_EMPTY =

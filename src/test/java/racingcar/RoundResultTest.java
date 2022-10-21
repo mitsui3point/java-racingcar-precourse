@@ -23,15 +23,12 @@ public class RoundResultTest {
     @BeforeEach
     void setUp() {
         this.names = "pobi,crong,honux";
-
         this.limitRoundIndex = 10;
         this.rounds = new ArrayList<>();
-        for (int roundIndex = 0; roundIndex < this.limitRoundIndex; roundIndex++) {
+        for (int testRandomNumberIndex = 0; testRandomNumberIndex < this.limitRoundIndex; testRandomNumberIndex++) {
+            int generateIndex = testRandomNumberIndex;
             this.rounds.add(
-                    new Round(
-                            this.names,
-                            this.getTestRandomNumbers(roundIndex)
-                    )
+                    new Round(this.names, () -> this.getTestRandomNumbers(generateIndex))
             );
         }
 

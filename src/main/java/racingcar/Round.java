@@ -4,6 +4,7 @@ import racingcar.constant.CarStatus;
 import racingcar.constant.Conditions;
 import racingcar.constant.ErrorMessage;
 import racingcar.constant.Regex;
+import racingcar.util.NumberGenerator;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -11,19 +12,21 @@ import java.util.Map;
 public class Round {
     private Map<String, CarStatus> round;
 
-    public Round(String names, int[] randomNumbers) {
-        this.checkMembers(names, randomNumbers);
-        this.setMembers(names, randomNumbers);
+    public Round(String names, NumberGenerator numberGenerator) {
+        this.checkMembers(names, numberGenerator);
+        this.setMembers(names, numberGenerator);
     }
 
-    private void checkMembers(String names, int[] randomNumbers) {
+    private void checkMembers(String names, NumberGenerator numberGenerator) {
         this.checkMember(this.isValidNames(names),
                 ErrorMessage.CAR_NAMES_IS_EMPTY);
         for (String name : names.split(Regex.COMMA)) {
             this.checkMember(this.isValidNameLength(name),
                     ErrorMessage.CAR_NAME_LENGTH_IS_OUT_OF_RANGE);
         }
-        this.checkMember(this.isValidRandomNumbersLength(randomNumbers, names),
+        this.checkMember(this.isValidNumberGenerator(numberGenerator),
+                ErrorMessage.NUMBER_GENERATOR_IS_NULL);
+        this.checkMember(this.isValidRandomNumbersLength(numberGenerator.generateNumber(), names),
                 ErrorMessage.RANDOM_NUMBERS_LENGTH_IS_INVALID);
     }
 
@@ -31,6 +34,10 @@ public class Round {
         if (!checkCondition) {
             throw new IllegalArgumentException(errorMessage);
         }
+    }
+
+    private boolean isValidNumberGenerator(NumberGenerator numberGenerator) {
+        return numberGenerator != null;
     }
 
     private boolean isValidRandomNumbersLength(int[] randomNumbers, String names) {
@@ -54,13 +61,13 @@ public class Round {
                         .isEmpty();
     }
 
-    private void setMembers(String names, int[] randomNumbers) {
+    private void setMembers(String names, NumberGenerator numberGenerator) {
         this.round = new LinkedHashMap<>();
         int carCount = 0;
         for (String name : names.split(Regex.COMMA)) {
             this.round.put(
                             name,
-                            new Car(randomNumbers[carCount++]).getStatus()
+                            new Car(numberGenerator.generateNumber()[carCount++]).getStatus()
             );
         }
     }
