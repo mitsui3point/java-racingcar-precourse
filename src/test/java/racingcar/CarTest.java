@@ -34,7 +34,7 @@ public class CarTest {
 
     @ParameterizedTest
     @ValueSource(ints = {
-            0, -1, -2, -10, -9,
+            -1, -2, -10, -9,
             10, 11, 32
     })
     void 자동차_랜덤번호_유효성체크(int randomNumber) {
