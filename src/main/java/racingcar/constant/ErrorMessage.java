@@ -16,4 +16,6 @@ public class ErrorMessage {
             PREFIX + "Random numbers length is invalid";
     public static final String ROUNDS_IS_EMPTY =
             PREFIX + "Rounds is empty";
+    public static final String ROUND_INDEX_LESS_THAN_ZERO =
+            PREFIX + "Round index less than zero";
 }
