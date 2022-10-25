@@ -15,3 +15,12 @@
       우승자 목록(List<String> winners) 도출
 4. RandomNumberGenerator
     * Car 에 1의자리 랜덤번호(0~9) 생성
+
+# View 구현
+
+---
+
+## 입력
+1. InputView
+    * 콘솔 화면 입력 값 저장: names, finalRoundIndex
+    * 입력 값 유효성체크
