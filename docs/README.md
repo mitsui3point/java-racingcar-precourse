@@ -24,3 +24,6 @@
 1. InputView
     * 콘솔 화면 입력 값 저장: names, finalRoundIndex
     * 입력 값 유효성체크
+## 출력
+1. ResultView
+    * 누적된 회차 목록, 우승자 목록 노출
