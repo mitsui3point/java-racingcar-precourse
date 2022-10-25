@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.constants.CarStatus;
+import racingcar.constants.Conditions;
 import racingcar.constants.ErrorMessage;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class Result {
     }
 
     private void addRoundResults(Cars cars) {
-        if (!(cars != null)) {
+        if (!Conditions.isValidCars(cars)) {
             throw new IllegalArgumentException(ErrorMessage.CARS_IS_NULL.getMessage());
         }
         int finalRoundIndex = cars.getFinalRoundIndex();

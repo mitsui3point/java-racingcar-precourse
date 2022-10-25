@@ -1,5 +1,6 @@
 package racingcar.constants;
 
+import racingcar.Cars;
 import racingcar.util.NumberGenerator;
 
 public class Conditions {
@@ -36,5 +37,9 @@ public class Conditions {
         } catch (NumberFormatException numberFormatException) {
             return false;
         }
+    }
+
+    public static boolean isValidCars(Cars cars) {
+        return cars != null;
     }
 }
