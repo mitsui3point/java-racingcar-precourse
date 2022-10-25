@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.constants.CarStatus;
+import racingcar.constants.ErrorMessage;
 import racingcar.util.NumberGenerator;
 
 import java.util.ArrayList;
@@ -63,6 +64,6 @@ public class ResultTest {
                 () -> {
                     new Result(null);
                 }
-        );
+        ).withMessageContaining(ErrorMessage.CARS_IS_NULL.getMessage());
     }
 }
