@@ -7,6 +7,8 @@ public class Conditions {
     public static final int MIN_NAME_LENGTH = 1;
     public static final int MAX_NAME_LENGTH = 5;
     public static final int MIN_FINAL_ROUND_INDEX = 0;
+    public static final int MAX_RANDOM_NUMBER = 9;
+    public static final int MIN_RANDOM_NUMBER = 0;
 
     public static boolean isValidName(String name) {
         return name.trim().length() >= MIN_NAME_LENGTH &&
