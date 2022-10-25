@@ -13,3 +13,5 @@
       누적된 회차 결과(List<Map<String, String>> roundResults)를 저장
     * 누적된 회차 결과의 가장 마지막 회차(getRoundResults.get(lastRoundIndex))의 결과로  
       우승자 목록(List<String> winners) 도출
+4. RandomNumberGenerator
+    * Car 에 1의자리 랜덤번호(0~9) 생성
