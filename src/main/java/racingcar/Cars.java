@@ -56,7 +56,7 @@ public class Cars {
 
     private void setCars(int finalRoundIndex, NumberGenerator numberGenerator) {
         this.cars = new LinkedHashMap<>();
-        putCars(finalRoundIndex, numberGenerator);
+        this.putCars(finalRoundIndex, numberGenerator);
     }
 
     private void putCars(int finalRoundIndex, NumberGenerator numberGenerator) {
@@ -75,5 +75,9 @@ public class Cars {
 
     public LinkedHashMap<String, List<CarStatus>> getCars() {
         return this.cars;
+    }
+
+    public int getFinalRoundIndex() {
+        return this.finalRoundIndex;
     }
 }

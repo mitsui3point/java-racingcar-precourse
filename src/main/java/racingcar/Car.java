@@ -10,7 +10,7 @@ public class Car {
     }
 
     public CarStatus getCarStatus() {
-        if (CarStatus.isForward(this.randomNumber)) {
+        if (CarStatus.isForwardNumber(this.randomNumber)) {
             return CarStatus.FORWARD;
         }
         return CarStatus.STOP;
