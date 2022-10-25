@@ -21,11 +21,20 @@ public class Conditions {
                 names.split(Regex.COMMA.getRegex()).length > MIN_NAMES_LENGTH;
     }
 
-    public static boolean isFinalRoundIndex(int finalRoundIndex) {
+    public static boolean isValidRangeFinalRoundIndex(int finalRoundIndex) {
         return finalRoundIndex > MIN_FINAL_ROUND_INDEX;
     }
 
     public static boolean isValidNumberGenerator(NumberGenerator numberGenerator) {
         return numberGenerator != null;
+    }
+
+    public static boolean isValidCastableFinalRoundIndex(String finalRoundIndexText) {
+        try {
+            Integer.parseInt(finalRoundIndexText);
+            return true;
+        } catch (NumberFormatException numberFormatException) {
+            return false;
+        }
     }
 }

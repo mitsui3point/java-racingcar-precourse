@@ -41,7 +41,7 @@ public class Cars {
     }
 
     private void setFinalRoundIndex(int finalRoundIndex) {
-        if (!Conditions.isFinalRoundIndex(finalRoundIndex)) {
+        if (!Conditions.isValidRangeFinalRoundIndex(finalRoundIndex)) {
             throw new IllegalArgumentException(ErrorMessage.FINAL_ROUND_INDEX_IS_OUT_OF_RANGE.getMessage());
         }
         this.finalRoundIndex = finalRoundIndex;
