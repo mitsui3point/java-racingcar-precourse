@@ -24,14 +24,16 @@ public class InputViewTest {
 
     @Test
     void 이름목록_등록_호출_비교() {
-        this.inputView = new InputView(this.names, this.finalRoundIndexText);
+        this.inputView = new InputView();
+        this.inputView.setNames(this.names);
         String actual = this.inputView.getNames();
         assertThat(actual).isEqualTo(this.names);
     }
 
     @Test
     void 회차_등록_호출_비교() {
-        this.inputView = new InputView(this.names, this.finalRoundIndexText);
+        this.inputView = new InputView();
+        this.inputView.setFinalRoundIndex(this.finalRoundIndexText);
         int actual = this.inputView.getFinalRoundIndex();
         assertThat(actual).isEqualTo(Integer.parseInt(this.finalRoundIndexText));
     }
@@ -41,7 +43,7 @@ public class InputViewTest {
     void 이름목록입력_예외(String names) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
                 () -> {
-                    new InputView(names, this.finalRoundIndexText);
+                    new InputView().setNames(names);
                 }
         ).withMessageContaining(ErrorMessage.NAMES_IS_NULL.getMessage());
     }
@@ -54,7 +56,7 @@ public class InputViewTest {
     void 이름입력_예외(String names) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
                 () -> {
-                    new InputView(names, this.finalRoundIndexText);
+                    new InputView().setNames(names);
                 }
         ).withMessageContaining(ErrorMessage.NAME_IS_OUT_OF_RANGE.getMessage());
     }
@@ -63,10 +65,10 @@ public class InputViewTest {
     @ValueSource(strings = {
             "0", "-1", "-10", "-24"
     })
-    void 회차_예외(String finalRoundIndex) {
+    void 회차_예외(String finalRoundIndexText) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
                 () -> {
-                    new InputView(this.names, finalRoundIndex);
+                    new InputView().setFinalRoundIndex(finalRoundIndexText);
                 }
         ).withMessageContaining(ErrorMessage.FINAL_ROUND_INDEX_IS_OUT_OF_RANGE.getMessage());
     }

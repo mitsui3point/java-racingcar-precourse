@@ -8,12 +8,7 @@ public class InputView {
     private String names;
     private int finalRoundIndex;
 
-    public InputView(String names, String finalRoundIndexText) {
-        this.setNames(names);
-        this.setFinalRoundIndex(finalRoundIndexText);
-    }
-
-    private void setFinalRoundIndex(String finalRoundIndexText) {
+    public void setFinalRoundIndex(String finalRoundIndexText) {
         if (!Conditions.isValidCastableFinalRoundIndex(finalRoundIndexText)) {
             throw new IllegalArgumentException(ErrorMessage.FINAL_ROUND_INDEX_IS_NOT_A_NUMBER.getMessage());
         }
